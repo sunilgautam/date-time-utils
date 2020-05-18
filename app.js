@@ -35,7 +35,7 @@ $(() => {
     $('#date-right-1').text(start.valueOf());
   });
   
-  const startDate2 = moment.utc(`${moment().subtract(5, 'hours').subtract(30, 'minutes').format('DD-MM-YYYY HH:mm:ss')} +0000`, 'DD-MM-YYYY HH:mm:ss ZZ').format('DD-MM-YYYY HH:mm:ss');
+  const startDate2 = moment.utc(`${moment().startOf('day').subtract(5, 'hours').subtract(30, 'minutes').format('DD-MM-YYYY HH:mm:ss')} +0000`, 'DD-MM-YYYY HH:mm:ss ZZ').format('DD-MM-YYYY HH:mm:ss');
   $('#input-date-2').daterangepicker({
     singleDatePicker: true,
     timePicker: true,
@@ -64,7 +64,7 @@ $(() => {
     locale: {
       format: 'DD-MM-YYYY HH:mm:ss'
     },
-    startDate: moment().format('DD-MM-YYYY HH:mm:ss')
+    startDate: moment().startOf('day').format('DD-MM-YYYY HH:mm:ss')
   }, (start) => {
     const sourceTimestamp = moment.utc(`${start.format('DD-MM-YYYY HH:mm:ss')} +05:30`, 'DD-MM-YYYY HH:mm:ss ZZ').valueOf();
     const targetDateTime = moment.utc(sourceTimestamp).utcOffset('+0000');
